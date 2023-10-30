@@ -89,6 +89,7 @@ window.content.items = [
         baseMinDamage: 4,
         baseMaxDamage: 12,
     },
+]
         //Add more
     /*
     4. 
@@ -371,15 +372,4 @@ baseMaxDamage: 18
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     */
-]
