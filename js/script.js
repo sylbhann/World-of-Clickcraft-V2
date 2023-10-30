@@ -16,9 +16,9 @@ var app = new Vue({
 			selectedTab: 0,
 		},
 		keybinds: {
-			bag: 66,
-			upgradeItem: 85,
-			merchant: 77,
+			bag: 66, //Keymapped to "B"
+			upgradeItem: 85, //Keymapped to "U"
+			merchant: 77, //Keymapped to "M"
 		},
 		configurableValues: {
 			itemQualityBorderOpacity: 70,
@@ -41,6 +41,7 @@ var app = new Vue({
 			slotId: null,
 			containerName: null,
 		},
+		//Starting Stats for the Player on initialRelease
 		player: {
 			name: 'Player',
 			minDamage: 0,
@@ -103,6 +104,7 @@ var app = new Vue({
 				item: [],
 				slotId: -1,
 			},
+			//Rename to jewlery, as Rings/Trinkets/Necklaces could also be here
 			trinkets: [
 				{
 					item: [],
@@ -136,8 +138,8 @@ var app = new Vue({
 		merchantFrame: {
 			open: false,
 			selectedMerchant: 0, // id of the merchant
-			cooldown: 900, //seconds
-			actualCooldown: 0,
+			//Removed CD for visiting the Merchant - cooldown: 900, //seconds
+			//actualCooldown: 0,
 			mode: 0, // 0 = merchant; 1 = sold items
 			soldItems: [null, null, null, null, null, null, null, null, null, null, null, null],
 			totalPages: 1,
@@ -419,11 +421,12 @@ var app = new Vue({
 
 			return weaponTypeMapping[itemWeaponType]
 		},
-
+		//Let 0-NotUnique,1-Unique,2-Unique-Equipped
 		tooltipItemUniqueType() {
 			let itemUniqueType = this.hoverItem.item[0].unique
 
 			const weaponTypeMapping = {
+				0: "Not-Unique",
 				1: 'Unique',
 				2: 'Unique-Equipped',
 			}
@@ -842,7 +845,8 @@ var app = new Vue({
 			return x == 'Infinity' ? 'noxp' : x
 		},
 
-		/*
+		
+ 		// below this --------------------------- was originally commented out
 		//Fills the enemy pool
 		initializeEnemyPool() {
 			let enemiesArray = []
@@ -939,7 +943,7 @@ var app = new Vue({
 			enemy = this.generateEnemy(this.chooseEnemy(), allowRare)
 			enemy.hp = enemy.maxHp
 		},
-		*/
+	// above this --------------------------- was originally commented out
 
 		enemyDeadEvent(enemy) {
 			enemy.killCount++
